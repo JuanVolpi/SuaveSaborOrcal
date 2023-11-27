@@ -23,7 +23,7 @@ export default function Day({ day, rowIdx }: DayProps) {
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className={`border border-gray-200 flex flex-col text-center ${
+      className={`border border-gray-200 rounded-md flex flex-col text-center ${
         isHovering
           ? 'transform duration-300 ease-in-out hover:-translate-y-1 hover:border-none cursor-pointer bg-slate-500/10'
           : 'transform duration-300 translate-y-0'

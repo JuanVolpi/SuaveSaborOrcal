@@ -1,8 +1,8 @@
 import { Button } from '@nextui-org/button';
 import logo from '../../../../public/logo.png';
-import { BeakerIcon, ChevronLeftIcon } from '@heroicons/react/24/solid';
-import UserIcon from '@heroicons/react/24/outline/UserIcon';
-import { User } from 'heroicons-react';
+import ChevronLeftIcon from '@heroicons/react/24/outline/ChevronLeftIcon';
+import ChevronRightIcon from '@heroicons/react/24/outline/ChevronRightIcon';
+import { Spacer } from '@nextui-org/react';
 
 export default function CalendarHeader() {
   return (
@@ -19,6 +19,10 @@ export default function CalendarHeader() {
         </Button>
         <Button isIconOnly color="danger" aria-label="Like">
           <ChevronLeftIcon className="w-5" />
+        </Button>
+        <Spacer />
+        <Button isIconOnly color="danger" aria-label="Like">
+          <ChevronRightIcon className="w-5" />
         </Button>
       </header>
     </>
