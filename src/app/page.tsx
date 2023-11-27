@@ -1,10 +1,13 @@
-import Image from 'next/image';
-import Calendar from './components/Calendar/Calendar';
+import Image from "next/image";
+import Calendar from "./components/Calendar/Calendar";
+import ContextWrapper from "@/context/ContextWrapper";
 
 export default function Home() {
   return (
     <main>
-      <Calendar></Calendar>
+      <ContextWrapper>
+        <Calendar></Calendar>
+      </ContextWrapper>
     </main>
   );
 }

@@ -1,14 +1,20 @@
-'use client';
+"use client";
 
-import { debug } from 'console';
-import { getMonth } from './util';
-import CalendarHeader from './CalendarHeader/CalendarHeader';
-import Month from './Month/Month';
-import Sidebar from './Sidebar/Sidebar';
-import { useState } from 'react';
+import { debug } from "console";
+import { getMonth } from "./util";
+import CalendarHeader from "./CalendarHeader/CalendarHeader";
+import Month from "./Month/Month";
+import Sidebar from "./Sidebar/Sidebar";
+import { useState, useContext, useEffect } from "react";
+import GlobalContext from "@/context/GlobalContext";
 
 export default function Calendar() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
+  const { monthIndex } = useContext(GlobalContext);
+
+  useEffect(() => {
+    setCurrentMonth(getMonth(monthIndex));
+  }, [monthIndex]);
 
   return (
     <>
