@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { debug } from "console";
-import { getMonth } from "./util";
-import CalendarHeader from "./CalendarHeader/CalendarHeader";
-import Month from "./Month/Month";
-import Sidebar from "./Sidebar/Sidebar";
-import { useState, useContext, useEffect } from "react";
-import GlobalContext from "@/context/GlobalContext";
+import { debug } from 'console';
+import { getMonth } from './util';
+import CalendarHeader from './CalendarHeader/CalendarHeader';
+import Month from './Month/Month';
+import Sidebar from './Sidebar/Sidebar';
+import { useState, useContext, useEffect } from 'react';
+import GlobalContext from '@/context/GlobalContext';
 
 export default function Calendar() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -18,7 +18,7 @@ export default function Calendar() {
 
   return (
     <>
-      <div className="h-screen w-screen flex-columns">
+      <div className="h-screen w-screen flex flex-col">
         <CalendarHeader />
         <div className="flex flex-1">
           <Sidebar />

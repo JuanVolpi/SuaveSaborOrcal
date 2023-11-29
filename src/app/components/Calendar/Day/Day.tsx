@@ -3,6 +3,8 @@ import React from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 import { useState } from 'react';
+import { Button, useDisclosure } from '@nextui-org/react';
+import DayModal from '../../Modal/DayModal/DayModal';
 dayjs.locale('pt-br');
 
 interface DayProps {
@@ -12,6 +14,7 @@ interface DayProps {
 
 export default function Day({ day, rowIdx }: DayProps) {
   const [isHovering, setIsHovering] = useState(false);
+  const openDayModal = useDisclosure();
 
   function getCurrentDayClass() {
     return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY')
@@ -23,9 +26,10 @@ export default function Day({ day, rowIdx }: DayProps) {
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      onClick={() => setIsHovering(false)}
       className={`border border-gray-200 rounded-md flex flex-col text-center ${
         isHovering
-          ? 'transform duration-300 ease-in-out hover:-translate-y-1 hover:border-none cursor-pointer bg-slate-500/10'
+          ? 'transform duration-300 ease-in-out hover:-translate-y-1 hover:border-none bg-slate-500/10'
           : 'transform duration-300 translate-y-0'
       }`}
     >
@@ -39,6 +43,11 @@ export default function Day({ day, rowIdx }: DayProps) {
           {day.format('DD')}
         </p>
       </header>
+      <div
+        className="flex-1 cursor-pointer bg-green-500/10"
+        onClick={openDayModal.onOpen}
+      ></div>
+      <DayModal openModal={openDayModal} />
     </div>
   );
 }
