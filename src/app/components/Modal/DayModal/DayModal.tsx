@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Modal,
   ModalContent,
@@ -7,33 +7,54 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-} from '@nextui-org/react';
+  Divider,
+} from "@nextui-org/react";
+import { PlusIcon } from "@heroicons/react/20/solid";
+import CreateOrderModal from "./CreateOrderModal/CreateOrderModal";
 
-type DayModalPros = {
+type DayModalProps = {
   openModal: {
     isOpen: boolean;
     onOpen: () => void;
     onOpenChange: () => void;
   };
+  dayInfo: {
+    dayNumber: String;
+    monthName: String;
+  };
 };
 
-export default function DayModal(props: DayModalPros) {
+export default function DayModal(props: DayModalProps) {
   const { isOpen, onOpen, onOpenChange } = props.openModal;
+  const { dayNumber } = props.dayInfo;
+  const { monthName } = props.dayInfo;
 
+  const openDayModal = useDisclosure();
   return (
     <>
       <Modal
         className="h-[85vh] w-[95vw]"
         isOpen={isOpen}
-        style={{ maxWidth: 'none' }}
+        style={{ maxWidth: "none" }}
         onOpenChange={onOpenChange}
       >
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                Modal Title
+              <ModalHeader className="flex flex-col gap-1 sm:flex-row items-center justify-between">
+                <p>
+                  {dayNumber} {monthName}
+                </p>
+                <Button
+                  startContent={<PlusIcon />}
+                  color="primary"
+                  className="min-w-[180px] mr-5"
+                  onClick={openDayModal.onOpen}
+                >
+                  Criar Encomenda
+                </Button>
               </ModalHeader>
+              <Divider></Divider>
               <ModalBody>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -58,14 +79,12 @@ export default function DayModal(props: DayModalPros) {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
-                </Button>
               </ModalFooter>
             </>
           )}
         </ModalContent>
       </Modal>
+      <CreateOrderModal openModal={openDayModal}></CreateOrderModal>
     </>
   );
 }
